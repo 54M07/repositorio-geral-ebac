@@ -1,13 +1,28 @@
-# Projeto de Catálogo de Produtos
+# Repositório do Curso de Engenheiro Front-End
 
-Bem-vindo ao projeto de catálogo de produtos! Este é um simples site que exibe uma lista de produtos em um layout responsivo.
+Bem-vindo ao repositório do curso de Engenheiro Front-End da EBAC! Aqui você encontrará uma coleção de exercícios, projetos e materiais relacionados ao curso. Este repositório é uma maneira organizada de compartilhar e acessar o trabalho que realizei durante o curso.
 
-## Demonstração
+# Sobre o Curso
 
-Inclua aqui uma captura de tela ou um GIF animado que mostre a aparência do seu projeto em ação.
+Neste curso, aprendi ampla gama de habilidades e tecnologias fundamentais para se tornar um Engenheiro Front-End qualificado. O curso abordou os seguintes tópicos:
 
-## Tecnologias Utilizadas
+Conhecimento sólido de HTML, CSS e JavaScript.
+Uso eficiente do Git e GitHub para controle de versão e colaboração.
+Desenvolvimento de interfaces usando Vue.js.
+Construção de interfaces interativas que se comunicam com APIs.
+Utilização das bibliotecas JavaScript jQuery, SASS e React.js.
+Experiência com metodologias ágeis para desenvolvimento.
 
-- HTML
-- CSS (Sass)
-- Imagens de espaçamento: via.placeholder.com (substitua por suas próprias imagens no projeto real)
+
+## Estrutura do Repositório
+
+O repositório está organizado utilizando diferentes branches para separar os tópicos e projetos do curso. Cada branch contém materiais específicos relacionados ao tópico correspondente. A estrutura é a seguinte:
+
+### [branch: main]
+
+A branch principal contém informações gerais sobre o curso e serve como ponto de entrada para as diferentes partes do repositório.
+
+### [branch: exercicios]
+
+Esta branch contém os exercícios práticos feitos durante o curso.
+
