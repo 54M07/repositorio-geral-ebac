@@ -5,44 +5,6 @@
   font-family: "Roboto", sans-serif;
 }
 
-body {
-  background-color: #f5f6fa;
-}
-
-li {
-  list-style: none;
-}
-
-.container {
-  max-width: 1024px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-header {
-  background-color: #182C61;
-  position: sticky;
-  top: 0;
-  left: 0;
-}
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0;
-}
-header .menu {
-  display: flex;
-}
-header .menu li {
-  font-weight: bold;
-  margin-left: 24px;
-}
-header .menu li a {
-  color: #fff;
-  text-decoration: none;
-}
-
 section {
   padding: 56px 0;
 }
@@ -72,6 +34,30 @@ section .products .product-button:hover {
   background-color: #4cd137;
 }
 
+header {
+  background-color: #182C61;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+header .menu {
+  display: flex;
+}
+header .menu li {
+  font-weight: bold;
+  margin-left: 24px;
+}
+header .menu li a {
+  color: #fff;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 1023px) {
   .container {
     max-width: 80%;
@@ -88,6 +74,19 @@ section .products .product-button:hover {
   .products .product-item {
     margin-bottom: 32px;
   }
+}
+body {
+  background-color: #f5f6fa;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=main.css.map */
