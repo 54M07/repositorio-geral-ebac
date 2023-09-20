@@ -1,15 +1,106 @@
-modules.exports = function (grunt) {
+// Este é um módulo do Node.js que exporta uma função que recebe o objeto Grunt como argumento.
+module.exports = function (grunt) {
+
+    // Aqui estamos configurando as tarefas do Grunt usando grunt.initConfig().
     grunt.initConfig({
+        // Lê o arquivo package.json e torna seus dados disponíveis como pkg.
         pkg: grunt.file.readJSON('package.json'),
 
+        // Configuração da tarefa 'less' para compilar arquivos Less.
         less: {
             development: {
                 files: {
                     'dev/styles/main.css': 'src/styles/main.less'
                 }
+            },
+            production: {
+                options: {
+                    compress: true,
+                },
+                files: {
+                    'dist/styles/main.min.css': 'src/styles/main.less'
+                }
             }
-         },
-       
+        },
+        watch: {
+            less: {
+                files: ['src/styles/**/*.less'],
+                tasks: ['less:development', 'less:production']
+            },
+            html: {
+                files: ['src/index.html'],
+                tasks: ['replace:dev']
+            },
+            js: { 
+                files: ['src/scripts/**/*.js'],
+                tasks: ['uglify']
+            }
+        },
+        replace: {
+            dev: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'ENDERECO_DO_CSS',
+                            replacement: './styles/main.css'
+                        },
+                        {
+                            match: 'ENDERECO_DO_JS',
+                            replacement: '../src/scripts/main.js'
+                        }
+                    ]
+
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['src/index.html'],
+                        dest: 'dev/'
+
+                    }
+                ]
+            },
+
+            dist: {
+                options: {
+                    patterns: [
+                        {
+                            match: 'ENDERECO_DO_CSS',
+                            replacement: './styles/main.min.css'
+                        },
+                        {
+                            match: 'ENDERECO_DO_JS',
+                            replacement: './scripts/main.min.js'
+                        }
+                    ]
+                },
+
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['prebuild/index.html'],
+                        dest: 'dist/'
+
+                    }
+                ]
+            }
+        },
+
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {
+                    'prebuild/index.html': 'src/index.html'
+                }
+            }
+        },
+
+        clean: ['prebuild'],
         uglify: {
             target: {
                 files: {
@@ -17,12 +108,21 @@ modules.exports = function (grunt) {
                 }
             }
         }
+
     })
 
+
+
+    // Carrega os plugins Grunt necessários para as tarefas 'less', 'sass' e 'concurrent'.
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-replace');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
+    // Define a tarefa padrão 'default' que executa a tarefa 'concurrent'.
+    grunt.registerTask('default', ['watch']);
 
-    grunt.registerTask('default', ['less', 'uglify']);
-    
-};
+    grunt.registerTask('build', ['less:production', 'htmlmin:dist', 'replace:dist', 'clean', 'uglify']);
+}
